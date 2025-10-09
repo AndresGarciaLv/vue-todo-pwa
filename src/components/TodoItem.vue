@@ -5,7 +5,7 @@
         type="checkbox"
         :checked="todo.completed"
         @change="$emit('toggle', todo.id)"
-        class="h-6 w-6 rounded-full border-gray-300 text-blue-500 focus:ring-blue-500 cursor-pointer"
+        class="h-6 w-6 rounded-full border-gray-300 text-teal-500 focus:ring-teal-500 cursor-pointer"
       />
       <input
         v-if="isEditing"
@@ -15,20 +15,24 @@
         @blur="finishEditing"
         @keyup.enter="finishEditing"
         @keyup.escape="cancelEditing"
-        class="w-full bg-transparent outline-none focus:ring-2 focus:ring-blue-200 rounded px-2 py-1 -m-2"
+        class="w-full bg-transparent outline-none focus:ring-2 focus:ring-teal-200 rounded px-2 py-1 -m-2"
       />
       <span
         v-else
-        @dblclick="startEditing"
         :class="{ 'line-through text-gray-400': todo.completed }"
-        class="w-full cursor-pointer"
+        class="w-full"
       >
         {{ todo.text }}
       </span>
     </div>
-    <button @click="$emit('delete', todo.id)" class="ml-4 text-gray-400 hover:text-red-500 transition-colors flex-shrink-0">
-      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
-    </button>
+    <div class="flex items-center gap-2 flex-shrink-0 ml-4">
+      <button @click="startEditing" class="text-gray-400 hover:text-blue-500 transition-colors">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.5L13.196 5.196z"></path></svg>
+      </button>
+      <button @click="$emit('delete', todo.id)" class="text-gray-400 hover:text-red-500 transition-colors">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+      </button>
+    </div>
   </li>
 </template>
 

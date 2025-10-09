@@ -1,6 +1,6 @@
 <template>
   <div class="text-center py-12 bg-white rounded-2xl shadow-md">
-    <p class="text-gray-500">No tasks yet. Add one to get started!</p>
+    <p class="text-gray-500">Aún no hay tareas. ¡Añade una para empezar!</p>
   </div>
 </template>
 

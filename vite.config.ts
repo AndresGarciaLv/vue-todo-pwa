@@ -11,10 +11,10 @@ export default defineConfig({
     VitePWA({
       registerType: 'autoUpdate',
       manifest: {
-        name: 'Vue PWA To-Do',
-        short_name: 'Vue To-Do',
-        description: 'A simple To-Do app built with Vue, Vite, and Tailwind CSS.',
-        theme_color: '#ffffff',
+        name: 'PWA To-Do App',
+        short_name: 'ToDo App',
+        description: 'Una aplicación de tareas sencilla creada con Vue, Vite y Tailwind CSS.',
+        theme_color: '#14b8a6',
         background_color: '#ffffff',
         start_url: '.',
         display: 'standalone',

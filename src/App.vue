@@ -47,16 +47,16 @@ async function handleInstallClick() {
 </script>
 
 <template>
-  <div class="font-sans bg-gray-100 min-h-screen text-gray-800">
+  <div class="font-sans bg-slate-100 min-h-screen text-gray-800">
     <main class="max-w-2xl mx-auto py-12 px-4">
       <div class="text-center mb-8">
-        <h1 class="text-4xl font-bold text-gray-800">Vue PWA To-Do</h1>
+        <h1 class="text-4xl font-bold text-slate-800">PWA To-Do App</h1>
         <button 
           v-if="showInstallButton" 
           @click="handleInstallClick"
-          class="mt-4 px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors shadow-md hover:scale-105"
+          class="mt-4 px-4 py-2 bg-teal-500 text-white rounded-lg hover:bg-teal-600 transition-colors shadow-md hover:scale-105"
         >
-          Install App
+          Instalar App
         </button>
       </div>
 
@@ -65,8 +65,8 @@ async function handleInstallClick() {
           v-model="newTodoText"
           @keyup.enter="handleAddTodo"
           type="text"
-          placeholder="What needs to be done?"
-          class="w-full text-lg px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none"
+          placeholder="¿Qué necesitas hacer?"
+          class="w-full text-lg px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent outline-none"
         />
       </div>
 
@@ -88,6 +88,13 @@ async function handleInstallClick() {
       </ul>
 
       <EmptyState v-else />
+
+      <div class="mt-12 text-center">
+        <p class="text-sm text-gray-500">Creado por:</p>
+        <p class="text-lg text-gray-700 font-semibold">Andrés García Leyva</p>
+        <p class="text-lg text-gray-700 font-semibold">Juan Diego Mendoza Gutierrez</p>
+        <p class="mt-2 px-3 py-1 inline-block bg-gray-200 text-gray-800 text-sm rounded-full">IDYGS101</p>
+      </div>
 
     </main>
   </div>

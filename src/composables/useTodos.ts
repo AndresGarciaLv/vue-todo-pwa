@@ -47,7 +47,7 @@ export function useTodos() {
     });
     // Request notification permission and show notification
     if ('Notification' in window && Notification.permission === 'granted') {
-      new Notification('New task added!', {
+      new Notification('¡Nueva tarea añadida!', {
         body: text.trim(),
         icon: 'icons/icon-192x192.svg',
       });
@@ -67,6 +67,14 @@ export function useTodos() {
     const todo = todos.value.find(t => t.id === id);
     if (todo) {
       todo.completed = !todo.completed;
+      if (todo.completed) {
+        if ('Notification' in window && Notification.permission === 'granted') {
+          new Notification('¡Tarea completada!', {
+            body: todo.text,
+            icon: 'icons/icon-192x192.svg',
+          });
+        }
+      }
     }
   }
 
