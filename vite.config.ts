@@ -20,6 +20,16 @@ export default defineConfig({
         display: 'standalone',
         icons: [
           {
+            src: 'icons/logo-todoapp.png',
+            sizes: '192x192',
+            type: 'image/png',
+          },
+          {
+            src: 'icons/logo-todoapp.png',
+            sizes: '512x512',
+            type: 'image/png',
+          },
+          {
             src: 'icons/icon-192x192.svg',
             sizes: '192x192',
             type: 'image/svg+xml',
