@@ -4,6 +4,10 @@ import { useTodos } from './composables/useTodos';
 import TodoFilters from './components/TodoFilters.vue';
 import TodoItem from './components/TodoItem.vue';
 import EmptyState from './components/EmptyState.vue';
+import SplashScreen from './components/SplashScreen.vue';
+
+// Splash Screen: Show only on first visit per session
+const showSplash = ref(!sessionStorage.getItem('hasSeenSplash'));
 
 const { 
   filteredTodos, 
@@ -28,6 +32,15 @@ const deferredPrompt = ref<any>(null);
 const showInstallButton = ref(false);
 
 onMounted(() => {
+  if (showSplash.value) {
+    // If splash is shown, hide it after a delay and set flag in session storage
+    setTimeout(() => {
+      showSplash.value = false;
+      sessionStorage.setItem('hasSeenSplash', 'true');
+    }, 2500);
+  }
+
+  // Listen for PWA install prompt
   window.addEventListener('beforeinstallprompt', (e) => {
     e.preventDefault();
     deferredPrompt.value = e;
@@ -47,7 +60,11 @@ async function handleInstallClick() {
 </script>
 
 <template>
-  <div class="font-sans bg-slate-100 min-h-screen text-gray-800">
+  <Transition name="fade">
+    <SplashScreen v-if="showSplash" />
+  </Transition>
+
+  <div v-if="!showSplash" class="font-sans bg-slate-100 min-h-screen text-gray-800">
     <main class="max-w-2xl mx-auto py-12 px-4">
       <div class="text-center mb-8">
         <h1 class="text-4xl font-bold text-slate-800">PWA To-Do App</h1>
