@@ -77,7 +77,7 @@ async function handleInstallClick() {
         </button>
       </div>
 
-      <div class="bg-white rounded-2xl shadow-md p-6 mb-6">
+      <div class="bg-white rounded-2xl shadow-md p-6 mb-6 flex items-center space-x-4">
         <input
           v-model="newTodoText"
           @keyup.enter="handleAddTodo"
@@ -85,6 +85,13 @@ async function handleInstallClick() {
           placeholder="¿Qué necesitas hacer?"
           class="w-full text-lg px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent outline-none"
         />
+        <button
+          @click="handleAddTodo"
+          class="bg-teal-500 text-white px-6 py-3 rounded-lg hover:bg-teal-600 transition-colors shadow-md disabled:bg-teal-300 disabled:cursor-not-allowed"
+          :disabled="!newTodoText.trim()"
+        >
+          Agregar
+        </button>
       </div>
 
       <TodoFilters 
