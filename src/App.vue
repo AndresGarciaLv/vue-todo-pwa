@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue';
 import { useTodos } from './composables/useTodos';
+import TodoCounters from './components/TodoCounters.vue';
 import TodoFilters from './components/TodoFilters.vue';
 import TodoItem from './components/TodoItem.vue';
 import EmptyState from './components/EmptyState.vue';
@@ -10,10 +11,10 @@ import SplashScreen from './components/SplashScreen.vue';
 const showSplash = ref(!sessionStorage.getItem('hasSeenSplash'));
 
 const { 
+  todos,
   filteredTodos, 
   filter, 
   searchQuery, 
-  activeTodoCount, 
   addTodo, 
   toggleTodo, 
   deleteTodo, 
@@ -65,7 +66,7 @@ async function handleInstallClick() {
   </Transition>
 
   <div v-if="!showSplash" class="font-sans bg-slate-100 min-h-screen text-gray-800">
-    <main class="max-w-2xl mx-auto py-12 px-4">
+    <main class="max-w-3xl mx-auto py-12 px-4">
       <div class="text-center mb-8">
         <h1 class="text-4xl font-bold text-slate-800">PWA To-Do App</h1>
         <button 
@@ -94,10 +95,11 @@ async function handleInstallClick() {
         </button>
       </div>
 
+      <TodoCounters :todos="todos" />
+
       <TodoFilters 
         v-model:filter="filter" 
         v-model:searchQuery="searchQuery" 
-        :activeTodoCount="activeTodoCount"
       />
 
       <ul v-if="filteredTodos.length" class="space-y-4">
